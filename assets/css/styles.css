@@ -1152,6 +1152,162 @@ section {
     margin-right: 12px
 }
 
+.pricing {
+    padding: 96px 0 104px
+}
+
+.pricing-badge {
+    display: inline-flex;
+    margin: 0 auto 18px;
+    padding: 8px 18px;
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--lime);
+    font: 700 .72rem var(--body);
+    text-transform: uppercase;
+    letter-spacing: .08em
+}
+
+.pricing-heading h2 {
+    font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+    line-height: 1.15
+}
+
+.pricing-heading h2 .highlight {
+    background: var(--ink);
+    color: var(--lime);
+    padding: 2px 14px;
+    border-radius: 10px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 48px;
+    align-items: stretch
+}
+
+.pricing-card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 28px 26px;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    border-color: transparent;
+    box-shadow: 0 22px 46px rgba(5, 72, 63, .14)
+}
+
+.pricing-card.featured {
+    background: var(--lime);
+    border-color: transparent
+}
+
+.pricing-card.featured:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 22px 46px rgba(5, 72, 63, .2)
+}
+
+.pricing-tag {
+    align-self: flex-start;
+    padding: 7px 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--lime);
+    font: 700 .72rem var(--body);
+    text-transform: uppercase;
+    letter-spacing: .06em
+}
+
+.pricing-desc {
+    margin: 0 0 18px;
+    font-size: .9rem;
+    line-height: 1.5;
+    color: #496258
+}
+
+.pricing-card.featured .pricing-desc {
+    color: rgba(5, 43, 37, .78)
+}
+
+.pricing-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+    margin-bottom: 20px;
+    font: 800 2.5rem var(--display);
+    color: var(--ink)
+}
+
+.pricing-amount .currency {
+    font-size: 1.3rem;
+    font-weight: 700
+}
+
+.pricing-amount .period {
+    margin-left: 4px;
+    font: 500 .82rem var(--body);
+    color: #5c766c
+}
+
+.pricing-card.featured .pricing-amount .period {
+    color: rgba(5, 43, 37, .65)
+}
+
+.pricing-card>.btn {
+    width: 100%;
+    margin-bottom: 22px;
+    transition: transform .25s ease, background-color .25s ease, color .25s ease
+}
+
+.pricing-card .btn-light:hover {
+    background: var(--ink);
+    color: #fff;
+    transform: translateY(-2px)
+}
+
+.pricing-features {
+    display: grid;
+    gap: 10px;
+    margin: auto 0 0;
+    padding: 16px 18px;
+    list-style: none;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--lime) 14%, #fff);
+    font-size: .85rem
+}
+
+.pricing-features li {
+    display: flex;
+    align-items: center
+}
+
+.pricing-features li:before {
+    content: '✓';
+    margin-right: 10px;
+    color: var(--leaf);
+    font-weight: 700
+}
+
+.pricing-card.featured .pricing-features {
+    background: var(--ink);
+    color: #fff
+}
+
+.pricing-card.featured .pricing-features li:before {
+    color: var(--lime)
+}
+
 .services {
     background: var(--forest);
     color: #fff
@@ -2031,6 +2187,10 @@ textarea.field {
         grid-template-columns: 1fr
     }
 
+    .pricing-grid {
+        grid-template-columns: 1fr
+    }
+
     .values-photo {
         min-height: 340px
     }
@@ -2240,6 +2400,14 @@ textarea.field {
 
     .values-card {
         padding: 28px
+    }
+
+    .pricing {
+        padding: 72px 0 80px
+    }
+
+    .pricing-card {
+        padding: 24px
     }
 
     .form-row {
