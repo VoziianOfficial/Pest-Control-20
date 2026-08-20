@@ -26,3 +26,19 @@ section{padding:120px 0}.about-grid{display:grid;grid-template-columns:minmax(0,
 @media(max-width:900px){.values-heading{margin-bottom:42px}.values-heading h2{font-size:clamp(2.35rem,9vw,4.7rem)}.values-heading p{margin-top:24px}}
 @media(max-width:767px){.values>.site-container{width:calc(100% - 32px)}}
 @media(max-width:560px){.value-badge{padding:9px 22px;font-size:1rem}.values-heading h2 .highlight{padding:.04em .18em .1em}}
+
+.parallax{min-height:760px;padding:128px 0 118px;display:flex;align-items:center;background:var(--forest) url('../images/parallax-pest-control.jpg') center/cover fixed}
+.parallax:before{background:linear-gradient(90deg,rgba(5,72,63,.94),rgba(5,72,63,.82) 42%,rgba(5,72,63,.9)),rgba(5,72,63,.74)}
+.parallax-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:72px}
+.parallax-heading{text-align:center;max-width:1020px;margin-inline:auto}
+.parallax-heading .eyebrow{justify-content:center;color:var(--lime);font-size:.9rem;letter-spacing:.18em}
+.parallax-heading .eyebrow:after{content:'';width:32px;flex:0 0 auto;border-top:2px dotted currentColor}
+.parallax h2{font-family:var(--body);font-size:clamp(3rem,5.4vw,6.1rem);font-weight:700;line-height:1.04;letter-spacing:0;max-width:980px;margin:26px auto 0;color:#fff}
+.parallax-cards{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.2vw,34px)}
+.parallax-card{position:relative;min-width:0;min-height:330px;border-radius:8px;padding:112px clamp(24px,2.6vw,42px) 40px;background:rgba(214,250,0,.82);color:var(--ink);text-align:center;box-shadow:0 28px 58px rgba(0,27,22,.28);backdrop-filter:blur(5px)}
+.parallax-icon{position:absolute;top:-58px;left:50%;transform:translateX(-50%);width:116px;height:116px;border-radius:50%;display:grid;place-items:center;background:var(--forest);color:var(--lime);border:2px solid rgba(214,250,0,.46);box-shadow:0 18px 42px rgba(0,27,22,.32)}
+.parallax-icon svg{width:46px;height:46px;stroke-width:1.8}
+.parallax-card h3{margin:0 0 20px;font-size:clamp(1.35rem,1.9vw,2rem);line-height:1.12;color:var(--ink)}
+.parallax-card p{max-width:440px;margin:0 auto;font-size:clamp(1rem,1.15vw,1.14rem);line-height:1.55;color:#214940}
+@media(max-width:900px){.parallax{min-height:auto;padding:96px 0;background-attachment:scroll}.parallax-inner{gap:58px}.parallax-cards{grid-template-columns:1fr;gap:72px}.parallax-card{min-height:0;padding:96px 28px 34px}.parallax h2{font-size:clamp(2.45rem,9vw,4.4rem)}}
+@media(max-width:560px){.parallax{padding:82px 0}.parallax-heading .eyebrow{font-size:.74rem}.parallax-icon{width:96px;height:96px;top:-48px}.parallax-icon svg{width:38px;height:38px}.parallax-card{padding:78px 22px 28px}.parallax-card h3{font-size:1.35rem}.parallax-card p{font-size:.98rem}}
