@@ -1,0 +1,19 @@
+(() => {
+ const cfg=window.siteConfigData; if(!cfg)return;
+ const page=document.body.dataset.page||'Home'; document.title=`${page} | ${cfg.siteName}`;
+ document.querySelectorAll('[data-site-name]').forEach(e=>e.textContent=cfg.siteName);
+ document.querySelectorAll('[data-site-logo]').forEach(e=>e.src=cfg.logo);
+ document.querySelectorAll('[data-site-email]').forEach(e=>{e.textContent=cfg.email;e.href=`mailto:${cfg.email}`});
+ document.querySelectorAll('[data-disclaimer]').forEach(e=>e.textContent=cfg.disclaimer);
+ document.querySelectorAll('link[data-favicon]').forEach(e=>e.href=cfg.favicon);
+ const nav=`<a href="index.html">Home</a><a href="index.html#about">About</a><a href="residential-pest-control.html">Residential</a><a href="commercial-pest-control.html">Commercial</a><a href="index.html#contact">Contact</a>`;
+ document.querySelectorAll('[data-header]').forEach(el=>el.innerHTML=`<div class="site-container header-inner"><a class="site-logo" href="index.html"><img data-site-logo alt=""><span data-site-name></span></a><nav class="main-nav">${nav}</nav><a class="btn btn-primary header-cta" href="index.html#contact">Get Matched <span class="arrow">↗</span></a><button class="menu-toggle" aria-label="Open navigation">☰</button></div><nav class="mobile-nav" aria-label="Mobile navigation"><button aria-label="Close navigation">×</button>${nav}</nav>`);
+ document.querySelectorAll('[data-footer]').forEach(el=>el.innerHTML=`<div class="site-container"><div class="footer-grid"><div><a class="site-logo" href="index.html"><img data-site-logo alt=""><span data-site-name></span></a><p data-disclaimer style="max-width:440px"></p></div><div><h4>Explore</h4><nav class="footer-links">${nav}</nav></div><div><h4>Connect</h4><p>Questions about comparing options? Write to us.</p><a data-site-email></a><h4 style="margin-top:23px">Policies</h4><nav class="footer-links"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a><a href="cookie-policy.html">Cookie Policy</a></nav></div></div><div class="footer-bottom">© ${new Date().getFullYear()} <span data-site-name></span>. Independent provider matching platform.</div></div>`);
+ // hydrate inserted branding
+ document.querySelectorAll('[data-site-name]').forEach(e=>e.textContent=cfg.siteName);document.querySelectorAll('[data-site-logo]').forEach(e=>e.src=cfg.logo);document.querySelectorAll('[data-site-email]').forEach(e=>{e.textContent=cfg.email;e.href=`mailto:${cfg.email}`});document.querySelectorAll('[data-disclaimer]').forEach(e=>e.textContent=cfg.disclaimer);
+ document.querySelectorAll('.menu-toggle').forEach(b=>b.onclick=()=>document.querySelector('.mobile-nav').classList.add('open'));document.querySelectorAll('.mobile-nav button,.mobile-nav a').forEach(b=>b.onclick=()=>document.querySelector('.mobile-nav').classList.remove('open'));
+ document.querySelectorAll('.contact-form').forEach(form=>form.addEventListener('submit',async e=>{e.preventDefault();const status=form.querySelector('.success');const button=form.querySelector('[type=submit]');button.disabled=true;try{const res=await fetch('contact.php',{method:'POST',body:new FormData(form)});const d=await res.json();if(!d.success)throw Error(d.message);status.textContent=cfg.formSuccessMessage;status.style.display='block';form.reset()}catch(err){status.textContent=err.message||'Unable to send your request. Please try again.';status.style.display='block'}finally{button.disabled=false}}));
+ const cookie=document.querySelector('.cookie');if(cookie&&!localStorage.getItem('pestora-cookie')){cookie.classList.add('show');cookie.querySelectorAll('button').forEach(b=>b.onclick=()=>{localStorage.setItem('pestora-cookie',b.dataset.choice);cookie.classList.remove('show')})}
+ if(window.AOS)AOS.init({duration:420,offset:40,once:true,easing:'ease-out'});
+ if(window.lucide)lucide.createIcons();
+})()
