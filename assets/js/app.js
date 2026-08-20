@@ -19,5 +19,6 @@
  const cookie=document.querySelector('.cookie');if(cookie&&!localStorage.getItem('pestora-cookie')){cookie.classList.add('show');cookie.querySelectorAll('button').forEach(b=>b.onclick=()=>{localStorage.setItem('pestora-cookie',b.dataset.choice);cookie.classList.remove('show')})}
  if(window.AOS)AOS.init({duration:420,offset:40,once:true,easing:'ease-out'});
  if(window.Swiper)document.querySelectorAll('.service-showcase-swiper').forEach(swiper=>new Swiper(swiper,{loop:true,slidesPerView:'auto',spaceBetween:18,slideToClickedSlide:true,grabCursor:true,keyboard:{enabled:true},autoplay:{delay:3200,disableOnInteraction:false},breakpoints:{900:{spaceBetween:22}}}));
+ if(window.Swiper)document.querySelectorAll('.service-photo-swiper').forEach(swiper=>new Swiper(swiper,{loop:true,slidesPerView:1,spaceBetween:18,grabCursor:true,keyboard:{enabled:true},navigation:{prevEl:swiper.querySelector('.service-photo-prev'),nextEl:swiper.querySelector('.service-photo-next')},pagination:{el:swiper.querySelector('.swiper-pagination'),clickable:true},breakpoints:{720:{slidesPerView:2,spaceBetween:22},1100:{slidesPerView:2,spaceBetween:28}}}));
  if(window.lucide)lucide.createIcons();
 })()
