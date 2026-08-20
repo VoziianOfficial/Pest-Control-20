@@ -2611,7 +2611,7 @@ textarea.field {
 
 .testimonials h2 {
     margin: 0;
-    max-width: 640px;
+    max-width: 740px;
     font-family: var(--body);
     font-size: clamp(2.85rem, 4.35vw, 5.65rem);
     font-weight: 700;
