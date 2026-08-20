@@ -14,7 +14,8 @@ $service = trim(strip_tags($_POST['service'] ?? ''));
 $property = trim(strip_tags($_POST['propertyType'] ?? ''));
 $message = trim(strip_tags($_POST['message'] ?? ''));
 if (mb_strlen($name) < 2 || !filter_var($email, FILTER_VALIDATE_EMAIL) || !$service || !$property || mb_strlen($message) < 5) { http_response_code(422); echo json_encode(['success'=>false,'message'=>'Please complete all required fields.']); exit; }
-$subject = 'Pestora request: ' . substr($service, 0, 90);
+$siteName = trim($config['siteName'] ?? 'Website');
+$subject = $siteName . ' request: ' . substr($service, 0, 90);
 $body = "Name: $name\nEmail: $email\nService/Pest Issue: $service\nProperty Type: $property\n\nMessage:\n$message";
 $headers = "From: " . $recipient . "\r\nReply-To: " . $email . "\r\nContent-Type: text/plain; charset=UTF-8";
 $sent = @mail($recipient, $subject, $body, $headers);

@@ -2,8 +2,13 @@
     const cfg = window.siteConfigData;
     if (!cfg) return;
 
-    const page = document.body.dataset.page || 'Home';
-    document.title = `${page} | ${cfg.siteName}`;
+    const pageTitle = document.body.dataset.page || document.title.replace(/\s*\|.*$/, '').trim() || 'Home';
+    document.title = pageTitle === cfg.siteName ? cfg.siteName : `${pageTitle} | ${cfg.siteName}`;
+    document.querySelectorAll('link[data-favicon]').forEach(el => {
+        el.href = cfg.favicon;
+        el.type = 'image/svg+xml';
+        el.rel = 'icon';
+    });
 
     const mainLinks = [
         { label: 'Home', href: 'index.html', icon: 'home' },
@@ -23,12 +28,30 @@
     const mobilePolicyNav = policyLinks.map(link => `<a href="${link.href}">${link.label}</a>`).join('');
 
     const hydrateBranding = () => {
+        const values = {
+            siteName: cfg.siteName || '',
+            logo: cfg.logo || '',
+            favicon: cfg.favicon || '',
+            email: cfg.email || '',
+            phone: cfg.phone || '',
+            location: cfg.location || '',
+            disclaimer: cfg.disclaimer || '',
+            formSuccessMessage: cfg.formSuccessMessage || ''
+        };
+        const formatConfigText = template => String(template || '').replace(/\{(siteName|logo|favicon|email|phone|location|disclaimer|formSuccessMessage)\}/g, (_, key) => values[key]);
+
         document.querySelectorAll('[data-site-name]').forEach(el => {
             el.textContent = cfg.siteName;
         });
+        document.querySelectorAll('[data-site-name-inline]').forEach(el => {
+            el.textContent = cfg.siteName;
+        });
+        document.querySelectorAll('[data-site-template]').forEach(el => {
+            el.textContent = formatConfigText(el.dataset.siteTemplate);
+        });
         document.querySelectorAll('[data-site-logo]').forEach(el => {
             el.src = cfg.logo;
-            if (!el.alt) el.alt = `${cfg.siteName} logo`;
+            el.alt = `${cfg.siteName} logo`;
         });
         document.querySelectorAll('[data-site-email]').forEach(el => {
             el.textContent = cfg.email;
@@ -52,14 +75,16 @@
         });
         document.querySelectorAll('link[data-favicon]').forEach(el => {
             el.href = cfg.favicon;
+            el.type = 'image/svg+xml';
+            el.rel = 'icon';
         });
     };
 
     document.querySelectorAll('[data-header]').forEach(el => {
-        el.innerHTML = `<div class="header-top"><div class="site-container header-top-inner"><a class="site-logo" href="index.html"><img data-site-logo alt=""><span data-site-name></span></a><div class="header-info"><a class="info-item" data-site-email-link href="#"><span class="info-icon"><i data-lucide="mail"></i></span><div class="info-text"><span class="info-label">Mail Us :</span><strong class="info-value" data-site-email></strong></div></a><a class="info-item" href="index.html#contact"><span class="info-icon"><i data-lucide="message-circle"></i></span><div class="info-text"><span class="info-label">Message Us :</span><strong class="info-value" data-site-phone></strong></div></a><a class="info-item" data-site-location-link href="#" target="_blank" rel="noopener"><span class="info-icon"><i data-lucide="map-pin"></i></span><div class="info-text"><span class="info-label">Location :</span><strong class="info-value" data-site-location></strong></div></a></div><a class="btn btn-primary header-cta" href="index.html#contact">Get Matched</a></div></div><div class="header-nav"><div class="site-container header-nav-inner"><nav class="main-nav">${desktopNav}</nav><div class="header-social"><a href="index.html" aria-label="Home"><i data-lucide="home"></i></a><a href="index.html#about" aria-label="About"><i data-lucide="info"></i></a><a href="index.html#services" aria-label="Services"><i data-lucide="bug"></i></a><a href="residential-pest-control.html" aria-label="Residential Pest Control"><i data-lucide="house"></i></a><a href="commercial-pest-control.html" aria-label="Commercial Pest Control"><i data-lucide="building-2"></i></a><a href="index.html#contact" aria-label="Contact"><i data-lucide="send"></i></a></div><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><i data-lucide="menu"></i></button></div></div><div class="mobile-menu" id="mobile-menu" aria-hidden="true"><div class="mobile-menu-header site-container"><a class="site-logo" href="index.html"><img data-site-logo alt=""><span data-site-name></span></a><button class="mobile-menu-close" type="button" aria-label="Close menu"><span>Close</span><i data-lucide="x"></i></button></div><div class="mobile-menu-body site-container"><nav class="mobile-menu-links" aria-label="Primary mobile navigation">${mobilePrimaryNav}</nav><div class="mobile-menu-footer"><nav class="mobile-policy-links" aria-label="Policy navigation">${mobilePolicyNav}</nav><a class="mobile-menu-email" data-site-email></a></div></div></div>`;
+        el.innerHTML = `<div class="header-top"><div class="site-container header-top-inner"><a class="site-logo" href="index.html"><img data-site-logo><span data-site-name></span></a><div class="header-info"><a class="info-item" data-site-email-link href="#"><span class="info-icon"><i data-lucide="mail"></i></span><div class="info-text"><span class="info-label">Mail Us :</span><strong class="info-value" data-site-email></strong></div></a><a class="info-item" href="index.html#contact"><span class="info-icon"><i data-lucide="message-circle"></i></span><div class="info-text"><span class="info-label">Message Us :</span><strong class="info-value" data-site-phone></strong></div></a><a class="info-item" data-site-location-link href="#" target="_blank" rel="noopener"><span class="info-icon"><i data-lucide="map-pin"></i></span><div class="info-text"><span class="info-label">Location :</span><strong class="info-value" data-site-location></strong></div></a></div><a class="btn btn-primary header-cta" href="index.html#contact">Get Matched</a></div></div><div class="header-nav"><div class="site-container header-nav-inner"><nav class="main-nav">${desktopNav}</nav><div class="header-social"><a href="index.html" aria-label="Home"><i data-lucide="home"></i></a><a href="index.html#about" aria-label="About"><i data-lucide="info"></i></a><a href="index.html#services" aria-label="Services"><i data-lucide="bug"></i></a><a href="residential-pest-control.html" aria-label="Residential Pest Control"><i data-lucide="house"></i></a><a href="commercial-pest-control.html" aria-label="Commercial Pest Control"><i data-lucide="building-2"></i></a><a href="index.html#contact" aria-label="Contact"><i data-lucide="send"></i></a></div><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><i data-lucide="menu"></i></button></div></div><div class="mobile-menu" id="mobile-menu" aria-hidden="true"><div class="mobile-menu-header site-container"><a class="site-logo" href="index.html"><img data-site-logo><span data-site-name></span></a><button class="mobile-menu-close" type="button" aria-label="Close menu"><span>Close</span><i data-lucide="x"></i></button></div><div class="mobile-menu-body site-container"><nav class="mobile-menu-links" aria-label="Primary mobile navigation">${mobilePrimaryNav}</nav><div class="mobile-menu-footer"><nav class="mobile-policy-links" aria-label="Policy navigation">${mobilePolicyNav}</nav><a class="mobile-menu-email" data-site-email></a></div></div></div>`;
     });
     document.querySelectorAll('[data-footer]').forEach(el => {
-        el.innerHTML = `<div class="site-container"><div class="footer-grid"><div><a class="site-logo" href="index.html"><img data-site-logo alt=""><span data-site-name></span></a><p data-disclaimer style="max-width:440px"></p></div><div><h4>Explore</h4><nav class="footer-links">${footerNav}</nav></div><div><h4>Connect</h4><p>Questions about comparing options? Write to us.</p><a data-site-email></a><h4 style="margin-top:23px">Policies</h4><nav class="footer-links">${mobilePolicyNav}</nav></div></div><div class="footer-bottom">&copy; ${new Date().getFullYear()} <span data-site-name></span>. Independent provider matching platform.</div></div>`;
+        el.innerHTML = `<div class="site-container"><div class="footer-grid"><div><a class="site-logo" href="index.html"><img data-site-logo><span data-site-name></span></a><p data-disclaimer style="max-width:440px"></p></div><div><h4>Explore</h4><nav class="footer-links">${footerNav}</nav></div><div><h4>Connect</h4><p>Questions about comparing options? Write to us.</p><a data-site-email></a><h4 style="margin-top:23px">Policies</h4><nav class="footer-links">${mobilePolicyNav}</nav></div></div><div class="footer-bottom">&copy; ${new Date().getFullYear()} <span data-site-name></span>. Independent provider matching platform.</div></div>`;
     });
 
     hydrateBranding();
@@ -164,7 +189,8 @@
     });
 
     const setupCookieConsent = () => {
-        const consent = localStorage.getItem('pestoraCookieConsent');
+        const cookieConsentKey = 'siteCookieConsent';
+        const consent = localStorage.getItem(cookieConsentKey);
         if (consent) return;
 
         const banner = document.createElement('aside');
@@ -175,7 +201,7 @@
         requestAnimationFrame(() => banner.classList.add('is-visible'));
 
         const closeBanner = choice => {
-            localStorage.setItem('pestoraCookieConsent', choice);
+            localStorage.setItem(cookieConsentKey, choice);
             banner.classList.remove('is-visible');
             window.setTimeout(() => {
                 banner.remove();
