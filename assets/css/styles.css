@@ -403,7 +403,7 @@ header {
     isolation: isolate;
     overflow: hidden;
     color: #fff;
-    background: #093f36 url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2200&q=85') center/cover
+    background: #093f36 url('../images/parallax-pest-control.jpg') center/cover
 }
 
 .hero:before {
@@ -654,7 +654,7 @@ section {
 
 .about-photo {
     min-height: 640px;
-    background: url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1100&q=85') center/cover;
+    background: url('../images/card-8.jpg') center/cover;
     border-radius: 170px 20px 170px 20px;
     position: relative
 }
@@ -739,7 +739,9 @@ section {
 .service-card .card-image {
     position: absolute;
     inset: 0;
-    background: center/cover;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     transition: transform .5s
 }
 
@@ -782,27 +784,51 @@ section {
 }
 
 .s1 {
-    background-image: url('https://images.unsplash.com/photo-1605577388428-54c4c7d26d2c?auto=format&fit=crop&w=850&q=80')
+    background-image: url('../images/card-3.jpg')
 }
 
 .s2 {
-    background-image: url('https://images.unsplash.com/photo-1616246734737-5cbb2b2f5c78?auto=format&fit=crop&w=850&q=80')
+    background-image: url('../images/card-9.jpg')
 }
 
 .s3 {
-    background-image: url('https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=850&q=80')
+    background-image: url('../images/card-8.jpg')
 }
 
 .s4 {
-    background-image: url('https://images.unsplash.com/photo-1579113800032-c38bd7635818?auto=format&fit=crop&w=850&q=80')
+    background-image: url('../images/card-10.jpg')
 }
 
 .s5 {
-    background-image: url('https://images.unsplash.com/photo-1631897642056-97a7ab0b0f4d?auto=format&fit=crop&w=850&q=80')
+    background-image: url('../images/card-2.jpg')
 }
 
 .s6 {
-    background-image: url('https://images.unsplash.com/photo-1531761535209-180857e963b9?auto=format&fit=crop&w=850&q=80')
+    background-image: url('../images/card-1.jpg')
+}
+
+.services-grid .card-image.s1 {
+    background-image: url('../images/card-3.jpg')
+}
+
+.services-grid .card-image.s2 {
+    background-image: url('../images/card-9.jpg')
+}
+
+.services-grid .card-image.s3 {
+    background-image: url('../images/card-8.jpg')
+}
+
+.services-grid .card-image.s4 {
+    background-image: url('../images/card-10.jpg')
+}
+
+.services-grid .card-image.s5 {
+    background-image: url('../images/card-2.jpg')
+}
+
+.services-grid .card-image.s6 {
+    background-image: url('../images/card-1.jpg')
 }
 
 .tabs-wrap {
@@ -858,7 +884,7 @@ section {
     color: #fff;
     position: relative;
     overflow: hidden;
-    background: url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=2000&q=85') center/cover fixed
+    background: url('../images/parallax-pest-control.jpg') center/cover fixed
 }
 
 .parallax:before {
@@ -963,7 +989,7 @@ section {
 
 .values-photo {
     border-radius: 28px;
-    background: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=85') center/cover;
+    background: url('../images/card-7.jpg') center/cover;
     min-height: 300px
 }
 
@@ -996,7 +1022,7 @@ section {
 
 .values-photo-small {
     border-radius: 28px;
-    background: url('https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=850&q=80') center/cover;
+    background: url('../images/card-4.jpg') center/cover;
     min-height: 230px
 }
 
@@ -2464,6 +2490,22 @@ textarea.field {
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden
+}
+
+.insights-swiper .insight-image.s1 {
+    background-image: url('../images/card-3.jpg')
+}
+
+.insights-swiper .insight-image.s2 {
+    background-image: url('../images/card-9.jpg')
+}
+
+.insights-swiper .insight-image.s3 {
+    background-image: url('../images/card-8.jpg')
+}
+
+.insights-swiper .insight-image.s6 {
+    background-image: url('../images/card-1.jpg')
 }
 
 .insight-image:before {
