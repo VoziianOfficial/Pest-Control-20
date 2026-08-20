@@ -163,16 +163,30 @@
         });
     });
 
-    const cookie = document.querySelector('.cookie');
-    if (cookie && !localStorage.getItem('pestora-cookie')) {
-        cookie.classList.add('show');
-        cookie.querySelectorAll('button').forEach(button => {
-            button.onclick = () => {
-                localStorage.setItem('pestora-cookie', button.dataset.choice);
-                cookie.classList.remove('show');
-            };
-        });
-    }
+    const setupCookieConsent = () => {
+        const consent = localStorage.getItem('pestoraCookieConsent');
+        if (consent) return;
+
+        const banner = document.createElement('aside');
+        banner.className = 'site-cookie-banner';
+        banner.setAttribute('aria-label', 'Cookie notice');
+        banner.innerHTML = `<div class="site-cookie-banner__content"><strong>We use cookies</strong><p>We use essential cookies and optional cookies to improve your experience.</p><a href="cookie-policy.html">Cookie Policy</a></div><div class="site-cookie-banner__actions"><button class="btn btn-outline" id="siteCookieReject" type="button">Essential Only</button><button class="btn btn-primary" id="siteCookieAccept" type="button">Accept</button></div>`;
+        document.body.appendChild(banner);
+        requestAnimationFrame(() => banner.classList.add('is-visible'));
+
+        const closeBanner = choice => {
+            localStorage.setItem('pestoraCookieConsent', choice);
+            banner.classList.remove('is-visible');
+            window.setTimeout(() => {
+                banner.remove();
+            }, 320);
+        };
+
+        banner.querySelector('#siteCookieAccept').addEventListener('click', () => closeBanner('accepted'));
+        banner.querySelector('#siteCookieReject').addEventListener('click', () => closeBanner('rejected'));
+    };
+
+    setupCookieConsent();
 
     const prepareRevealElements = () => {
         document.querySelectorAll('.legal-section').forEach(section => {
