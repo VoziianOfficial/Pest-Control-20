@@ -263,8 +263,16 @@ summary,
 }
 
 .arrow {
-    font-size: 1.3em;
-    transition: .25s
+    width: 1em;
+    height: 1em;
+    flex: 0 0 auto;
+    stroke-width: 2.1;
+    transition: transform .25s ease
+}
+
+.btn .arrow {
+    width: 1.12em;
+    height: 1.12em
 }
 
 .btn:hover .arrow,
@@ -1213,11 +1221,13 @@ section {
     width: 46px;
     height: 46px;
     flex: 0 0 auto;
+    padding: 13px;
     background: var(--lime);
     color: var(--ink);
     border-radius: 50%;
     display: grid;
-    place-items: center
+    place-items: center;
+    stroke-width: 2.5
 }
 
 .s1 {
@@ -1545,11 +1555,7 @@ section {
 .provider-slide-arrow svg {
     width: 18px;
     height: 18px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.6;
-    stroke-linecap: round;
-    stroke-linejoin: round
+    stroke-width: 2.8
 }
 
 .provider-slide:hover .provider-slide-arrow {
@@ -3078,13 +3084,14 @@ textarea.field {
     width: 42px;
     height: 42px;
     flex: 0 0 auto;
+    padding: 12px;
     display: grid;
     place-items: center;
     border-radius: 50%;
     background: var(--mist);
     color: var(--leaf);
-    font-size: 1.05rem;
-    transition: .3s
+    stroke-width: 2.5;
+    transition: background .3s ease, color .3s ease, transform .3s ease
 }
 
 .insight-card:hover .insight-copy .arrow {
