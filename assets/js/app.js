@@ -168,7 +168,27 @@
         });
     }
 
-    if (window.AOS) AOS.init({ duration: 420, offset: 40, once: true, easing: 'ease-out' });
+    const prepareRevealElements = () => {
+        document.querySelectorAll('.legal-section').forEach(section => {
+            if (!section.hasAttribute('data-aos')) section.setAttribute('data-aos', 'fade-up');
+        });
+    };
+    const initRevealAnimations = () => {
+        prepareRevealElements();
+        if (!window.AOS) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        document.body.classList.add('aos-ready');
+        AOS.init({
+            duration: 500,
+            offset: 25,
+            once: true,
+            easing: 'ease-out-cubic',
+            delay: 0,
+            anchorPlacement: 'top-bottom'
+        });
+    };
+
     if (window.Swiper) {
         document.querySelectorAll('.service-showcase-swiper').forEach(swiper => new Swiper(swiper, {
             loop: true,
@@ -197,5 +217,6 @@
             }
         }));
     }
+    initRevealAnimations();
     if (window.lucide) lucide.createIcons();
 })();
