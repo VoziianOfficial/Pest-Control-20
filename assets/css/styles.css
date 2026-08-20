@@ -1038,11 +1038,20 @@ section {
 }
 
 .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
     min-width: 0
 }
 
 .swiper-slide {
+    flex-shrink: 0;
+    height: auto;
     min-width: 0
+}
+
+.provider-swiper .swiper-slide,
+.insights-swiper .swiper-slide {
+    width: calc((100% - 44px)/3)
 }
 
 .provider-slide {
@@ -1059,7 +1068,8 @@ section {
     height: 230px;
     background-color: var(--mist);
     background-position: center;
-    background-size: cover
+    background-size: cover;
+    background-repeat: no-repeat
 }
 
 .provider-slide-body {
@@ -2398,7 +2408,8 @@ textarea.field {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    line-height: 1.45
+    line-height: 1.45;
+    text-align: left
 }
 
 .consent input {
@@ -2433,6 +2444,44 @@ textarea.field {
 .consent input:focus-visible {
     outline: 0;
     box-shadow: 0 0 0 4px rgba(94, 143, 41, .16)
+}
+
+.consent a {
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px
+}
+
+.consent-text {
+    min-width: 0
+}
+
+@media(max-width:560px) {
+    .consent {
+        display: grid;
+        grid-template-columns: 22px minmax(0, 1fr);
+        gap: 11px;
+        align-items: start;
+        width: 100%;
+        margin: 2px 0 18px;
+        padding: 13px 14px;
+        border: 1px solid rgba(5, 72, 63, .1);
+        border-radius: 16px;
+        background: #f6faf3;
+        color: #405b51;
+        font-size: .84rem;
+        line-height: 1.5;
+        text-align: left
+    }
+
+    .consent input {
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+        border-radius: 6px
+    }
 }
 
 .insights .eyebrow {
@@ -2585,5 +2634,29 @@ textarea.field {
 
     .insight-copy {
         padding: 22px 20px 24px
+    }
+}
+
+@media(max-width:1049px) {
+    .provider-swiper .swiper-slide,
+    .insights-swiper .swiper-slide {
+        width: calc((100% - 22px)/2)
+    }
+}
+
+@media(max-width:699px) {
+    .provider-swiper .swiper-slide,
+    .insights-swiper .swiper-slide {
+        width: 92%
+    }
+}
+
+@media(max-width:1024px) {
+    h1,
+    h2 {
+        text-align: center;
+        text-wrap: balance;
+        margin-left: auto;
+        margin-right: auto
     }
 }

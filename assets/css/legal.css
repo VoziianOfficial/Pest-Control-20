@@ -62,3 +62,6 @@ body[data-page$="Policy"] header,body[data-page="Terms of Service"] header{backg
 
 @media(max-width:900px){.legal-hero{padding-top:170px}.legal-summary{margin-bottom:7px}.service-layout:has(.legal-content){grid-template-columns:1fr;gap:8px;padding-top:9px}.service-sidebar:has(+ .legal-content){top:auto}.legal-grid{grid-template-columns:1fr}.legal-definition-list{grid-template-columns:1fr}.legal-definition-list dd{border-top:1px solid var(--line)}}
 @media(max-width:560px){.legal-hero{padding-top:150px}.legal-section-head{align-items:flex-start}.legal-icon{width:38px;height:38px}.legal-icon svg{width:17px;height:17px}.legal-summary{padding:14px;align-items:flex-start}.legal-steps li{padding-left:46px}.legal-table{min-width:100%;font-size:.82rem}.legal-table th,.legal-table td{padding:10px 9px;vertical-align:top}}
+
+@media(max-width:1024px){.legal-hero,.legal-hero>.site-container{text-align:center}.legal-badge,.legal-hero h1,.legal-hero>.site-container>p{margin-left:auto;margin-right:auto}.legal-hero h1,.legal-content h2{text-align:center;text-wrap:balance}.legal-meta,.legal-section-head{justify-content:center}.legal-section-head{flex-direction:column}.legal-summary{text-align:left}}
+@media(max-width:560px){.legal-section-head{align-items:center}}
