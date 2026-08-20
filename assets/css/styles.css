@@ -1150,10 +1150,15 @@ section {
 }
 
 .check-list li:before {
-    content: '✓';
+    content: '';
+    display: inline-block;
+    width: 11px;
+    height: 7px;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
     color: var(--leaf);
-    font-weight: 700;
-    margin-right: 12px
+    margin-right: 12px;
+    transform: rotate(-45deg) translateY(-2px)
 }
 
 .showcase-grid {
@@ -1369,10 +1374,15 @@ section {
 }
 
 .pricing-features li:before {
-    content: '✓';
+    content: '';
+    flex: 0 0 auto;
+    width: 11px;
+    height: 7px;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
     margin-right: 10px;
     color: var(--leaf);
-    font-weight: 700
+    transform: rotate(-45deg) translateY(-1px)
 }
 
 .pricing-card.featured .pricing-features {
@@ -1862,8 +1872,13 @@ section {
 }
 
 .match-card li:before {
-    content: '✦';
-    margin-right: 10px
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 10px;
+    background: currentColor;
+    transform: rotate(45deg) translateY(-1px)
 }
 
 .match-card .btn {
@@ -1956,8 +1971,39 @@ section {
 }
 
 .faq-mini summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
     cursor: pointer;
-    font-weight: 700
+    font-weight: 700;
+    list-style: none
+}
+
+.faq-mini summary::-webkit-details-marker {
+    display: none
+}
+
+.faq-mini summary:after {
+    content: '';
+    flex: 0 0 auto;
+    width: 26px;
+    height: 26px;
+    border: 1px solid rgba(94, 143, 41, .35);
+    border-radius: 50%;
+    background:
+        linear-gradient(currentColor, currentColor) center/10px 2px no-repeat,
+        linear-gradient(currentColor, currentColor) center/2px 10px no-repeat;
+    color: var(--leaf);
+    transition: background-size .2s ease, background-color .2s ease, color .2s ease
+}
+
+.faq-mini details[open] summary:after {
+    background:
+        linear-gradient(currentColor, currentColor) center/10px 2px no-repeat,
+        linear-gradient(currentColor, currentColor) center/0 0 no-repeat;
+    background-color: var(--leaf);
+    color: #fff
 }
 
 .contact-form {
