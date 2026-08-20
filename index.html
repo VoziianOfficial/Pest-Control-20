@@ -380,10 +380,15 @@
         </section>
     </main>
     <footer class="footer" data-footer></footer>
-    <aside class="cookie"><strong>Cookie preferences</strong>
-        <p>We use essential cookies to make this site work. See our <a href="cookie-policy.html">Cookie Policy</a>.</p>
-        <div class="cookie-actions"><button class="btn btn-primary" data-choice="accepted">Accept</button><button
-                class="btn btn-outline" data-choice="essential">Essential only</button></div>
+    <aside class="cookie show">
+        <span class="cookie-icon"><i data-lucide="cookie"></i></span>
+        <div class="cookie-copy"><strong>Cookie preferences</strong>
+            <p>We use essential cookies to make this site work, plus optional ones to improve your experience. See
+                our <a href="cookie-policy.html">Cookie Policy</a>.</p>
+        </div>
+        <div class="cookie-actions"><button class="btn btn-outline" data-choice="essential">Essential only</button>
+            <button class="btn btn-primary" data-choice="accepted">Accept all<span class="arrow">↗</span></button>
+        </div>
     </aside>
     <script src="config/config.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
