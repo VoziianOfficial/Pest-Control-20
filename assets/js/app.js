@@ -18,5 +18,6 @@
  document.querySelectorAll('.contact-form').forEach(form=>form.addEventListener('submit',async e=>{e.preventDefault();const status=form.querySelector('.success');const button=form.querySelector('[type=submit]');button.disabled=true;try{const res=await fetch('contact.php',{method:'POST',body:new FormData(form)});const d=await res.json();if(!d.success)throw Error(d.message);status.textContent=cfg.formSuccessMessage;status.style.display='block';form.reset()}catch(err){status.textContent=err.message||'Unable to send your request. Please try again.';status.style.display='block'}finally{button.disabled=false}}));
  const cookie=document.querySelector('.cookie');if(cookie&&!localStorage.getItem('pestora-cookie')){cookie.classList.add('show');cookie.querySelectorAll('button').forEach(b=>b.onclick=()=>{localStorage.setItem('pestora-cookie',b.dataset.choice);cookie.classList.remove('show')})}
  if(window.AOS)AOS.init({duration:420,offset:40,once:true,easing:'ease-out'});
+ if(window.Swiper)document.querySelectorAll('.service-showcase-swiper').forEach(swiper=>new Swiper(swiper,{loop:true,slidesPerView:'auto',spaceBetween:18,slideToClickedSlide:true,grabCursor:true,keyboard:{enabled:true},autoplay:{delay:3200,disableOnInteraction:false},breakpoints:{900:{spaceBetween:22}}}));
  if(window.lucide)lucide.createIcons();
 })()
