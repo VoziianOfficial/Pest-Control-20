@@ -2560,11 +2560,11 @@ textarea.field {
 
 .testimonials h2 {
     margin: 0;
-    max-width: 780px;
+    max-width: 640px;
     font-family: var(--body);
-    font-size: clamp(3.1rem, 5.3vw, 6.9rem);
+    font-size: clamp(2.85rem, 4.35vw, 5.65rem);
     font-weight: 700;
-    line-height: 1.12;
+    line-height: 1.07;
     letter-spacing: 0
 }
 
@@ -2724,7 +2724,8 @@ textarea.field {
     }
 
     .testimonials h2 {
-        font-size: clamp(2.5rem, 11vw, 4.2rem)
+        max-width: 430px;
+        font-size: clamp(2.25rem, 9.6vw, 3.55rem)
     }
 
     .testimonials-top {
